@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import HeatCube from './HeatCube';
 
-function App() {
+const App = () => {
+  const [size, setSize] = useState(10);
+  const [alpha, setAlpha] = useState(0.01);
+  const [iterations, setIterations] = useState(100);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>3D Heat Conduction Visualizer</h1>
+      <div>
+        <label>
+          Size:
+          <input type="number" value={size} onChange={(e) => setSize(parseInt(e.target.value))} />
+        </label>
+        <label>
+          Alpha:
+          <input type="number" step="0.01" value={alpha} onChange={(e) => setAlpha(parseFloat(e.target.value))} />
+        </label>
+        <label>
+          Iterations:
+          <input type="number" value={iterations} onChange={(e) => setIterations(parseInt(e.target.value))} />
+        </label>
+      </div>
+      <HeatCube size={size} alpha={alpha} iterations={iterations} />
     </div>
   );
-}
+};
 
 export default App;
