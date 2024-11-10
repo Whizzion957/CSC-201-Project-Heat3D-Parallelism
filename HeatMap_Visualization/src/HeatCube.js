@@ -54,7 +54,7 @@ const HeatCube=({size,alpha,iterations})=>{
     heatData.forEach((plane,x)=>{
       plane.forEach((row,y)=>{
         row.forEach((heat,z)=>{
-          positions.push(x-size/2,y-size/2, z-size/2);
+          positions.push(x-size/2,y-size/2,z-size/2);
           color.setHSL(0.7*heat,1.0,0.5);
           colors.push(color.r,color.g,color.b);
         });
