@@ -10,7 +10,6 @@
 #include "numa.h" //-n
 
 int main(int argc, char *argv[]) {
-    
     int runSequential = 0;
     int runDoAll = 0;
     int runTiling = 0;
@@ -18,7 +17,6 @@ int main(int argc, char *argv[]) {
     int runDomainDecomposition = 0;
     int runTemporalDecomposition = 0;
     int runNUMA = 0;
-
     double sequential_time = 0;
     double numa_time = 0;
 
@@ -99,16 +97,6 @@ int main(int argc, char *argv[]) {
                 printf("Domain Decomposed Speedup: %f\n", sequential_time/(end_par-start_par));
             }
         }
-        // if(runTemporalDecomposition){
-        //     // Temporal decomposition run
-        //     double start_time = omp_get_wtime();
-        //     temporal_parallel_heat3D(grid, new_grid);
-        //     double end_time = omp_get_wtime();
-        //     printf("Temporal parallel time: %f seconds\n", end_time - start_time);
-        //     if(runSequential){
-        //         printf("Temporal Decomposed Speedup: %f\n", sequential_time/(end_time-start_time));
-        //     }
-        // }
         print_grid(grid);
         free_grid(grid);
         free_grid(new_grid);
@@ -137,12 +125,7 @@ int main(int argc, char *argv[]) {
             printf("NUMA-aware Speedup: %f\n", sequential_time/numa_time);
         }
 
-        // Print the final state of the grid (optional)
-        // print_grid(grid);
-
-        // Free dynamically allocated memory
         print_grid(grid);
-
         free_grid_numa(grid);
         free_grid_numa(new_grid);
     }

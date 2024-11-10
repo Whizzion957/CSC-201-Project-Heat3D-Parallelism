@@ -12,18 +12,18 @@ const HeatCube=({size,alpha,iterations})=>{
     renderer.setSize(window.innerWidth, window.innerHeight);
     mountRef.current.appendChild(renderer.domElement);
     camera.position.z=2*width;
-    // Initialize heat data grid
+    //Initialize heat data grid
     const initializeHeatCube=()=>{
       const grid=Array.from({length:size},()=>
         Array.from({length:size},()=>
           Array(size).fill(0)
         )
       );
-      // Set initial heat source(s)
-      grid[Math.floor(size/2)][Math.floor(size/2)][Math.floor(size/2)]=1000000000;
+      //Set initial heat source(s)
+      grid[Math.floor(size/2)][Math.floor(size/2)][Math.floor(size/2)]=1000;
       return grid;
     };
-    // Run heat conduction simulation
+    //Run heat conduction simulation
     const computeHeatConduction=()=>{
       let grid=initializeHeatCube();
       for(let iter=0; iter<iterations; iter++) {
@@ -45,7 +45,7 @@ const HeatCube=({size,alpha,iterations})=>{
     };
     const heatData=computeHeatConduction();
     setCubeData(heatData);
-    // Render cube points with color gradient
+    //Render cube points with color gradient
     const pointsGeometry=new THREE.BufferGeometry();
     const pointsMaterial=new THREE.PointsMaterial({size:0.05,vertexColors:true});
     const positions=[];

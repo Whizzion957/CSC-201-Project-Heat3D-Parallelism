@@ -13,11 +13,9 @@ num_steps=1000  #Number of time steps for the animation
 T=np.zeros((nx,ny,nz))
 T[nx//2,ny//2,nz//2]=1000
 
-# Prepare the figure and axis
 fig=plt.figure(figsize=(8,6))
 ax=fig.add_subplot(111,projection='3d')
 
-# Function to update temperature at each point based on neighbors
 def update_temperature(T):
     T_new=T.copy()
     for i in range(1,nx-1):
@@ -26,12 +24,10 @@ def update_temperature(T):
                 T_new[i,j,k]=T[i,j,k]+alpha*dt*((T[i+1,j,k]-2*T[i,j,k]+T[i-1,j,k])/dx**2+(T[i,j+1,k]-2*T[i,j,k]+T[i,j-1,k])/dy**2+(T[i,j,k+1]-2*T[i,j,k]+T[i,j,k-1])/dz**2)
     return T_new
 
-# Animation function
 def animate(frame):
     global T
     T=update_temperature(T)
     ax.clear()
-    # Take a cross-section slice to plot for visualization
     slice_index=nz//2
     X,Y=np.meshgrid(range(nx),range(ny))
     Z=T[:,:,slice_index]
@@ -46,6 +42,5 @@ def animate(frame):
 
 # Run animation
 ani=FuncAnimation(fig,animate,frames=num_steps,interval=100,blit=False)
-# Display the animation
 plt.show()
 ani
