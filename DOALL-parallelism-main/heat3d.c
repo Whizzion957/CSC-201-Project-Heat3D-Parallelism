@@ -97,7 +97,7 @@ int main(int argc, char *argv[]) {
                 printf("Domain Decomposed Speedup: %f\n", sequential_time/(end_par-start_par));
             }
         }
-        print_grid(grid);
+        // print_grid(grid);
         free_grid(grid);
         free_grid(new_grid);
     }
@@ -125,7 +125,7 @@ int main(int argc, char *argv[]) {
             printf("NUMA-aware Speedup: %f\n", sequential_time/numa_time);
         }
 
-        print_grid(grid);
+        // print_grid(grid);
         free_grid_numa(grid);
         free_grid_numa(new_grid);
     }
