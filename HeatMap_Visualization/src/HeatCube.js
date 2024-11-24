@@ -47,7 +47,7 @@ const HeatCube=({size,alpha,iterations})=>{
     setCubeData(heatData);
     //Render cube points with color gradient
     const pointsGeometry=new THREE.BufferGeometry();
-    const pointsMaterial=new THREE.PointsMaterial({size:0.05,vertexColors:true});
+    const pointsMaterial=new THREE.PointsMaterial({size:0.2,vertexColors:true});
     const positions=[];
     const colors=[];
     const color=new THREE.Color();
@@ -66,8 +66,8 @@ const HeatCube=({size,alpha,iterations})=>{
     scene.add(points);
     const animate=()=>{
       requestAnimationFrame(animate);
-      points.rotation.x+=0.01;
-      points.rotation.y+=0.01;
+      points.rotation.x+=0.0004;
+      points.rotation.y+=0.0004;
       renderer.render(scene,camera);
     };
     animate();
