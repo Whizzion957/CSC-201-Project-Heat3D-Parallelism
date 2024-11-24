@@ -5,7 +5,7 @@ The heat 3D algorithm, often used in scientific and engineering applications, so
 dimensional object. The heat equation is a partial differential equation PDE that describes how heat diffuses
 through a medium over time. To understand this algorithm, letʼs break down the concept step-by-step.
 ___
-### Installing OpenMP: ###
+### Installing OpenMP ###
 Open MPI uses a traditional configure script paired with make to build. Typical installs can be of the pattern:
 ```
 shell$ tar xf openmpi-<version>.tar.bz2
